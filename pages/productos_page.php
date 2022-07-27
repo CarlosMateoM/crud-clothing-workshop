@@ -107,7 +107,7 @@ $query = mysqli_query($con, $sql);
                         <input type="text" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
                         <input type="text" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
                         <input type="text" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
-                        <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10"></textarea>
+                        <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
 
@@ -118,10 +118,10 @@ $query = mysqli_query($con, $sql);
                     <table id="Factura" class="table table-dark table-striped table-bordered shadow-lg mt-4" style="width:100%">
                         <thead class="bg-warning">
                             <tr align="center">
-                                <th color=green>ID Producto</th>
-                                <th>Cantidad</th>
-                                <th>Valor Unitario</th>
-                                <th>Descripcion</th>
+                                <th color=green>Talla</th>
+                                <th>Numero</th>
+                                <th>Observacion</th>
+                                
                                 
                             </tr>
                         </thead>

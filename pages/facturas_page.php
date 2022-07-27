@@ -58,7 +58,7 @@ $query = mysqli_query($con, $sql);
                     <form action="../insert/insert_factura.php" method="POST">
 
                         <input type="date" class="form-control mb-3" name="fec">
-                        <input type="text" class="form-control mb-3" name="idc" placeholder="ID Cliente">
+                        <input type="number" class="form-control mb-3" name="idc" placeholder="ID Cliente">
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
 
@@ -117,10 +117,10 @@ $query = mysqli_query($con, $sql);
                     <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
                     <form action="../insert/insert_factura.php" method="POST">
 
-                        <input type="text" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
-                        <input type="text" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
-                        <input type="text" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
-                        <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10"></textarea>
+                        <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
+                        <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
+                        <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
+                        <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
 

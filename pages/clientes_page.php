@@ -58,9 +58,9 @@
                         <h1><span class="badge bg-warning">Nuevo Cliente</span></h1>
                                 <form action="../insert/insert_cliente.php" method="POST">
 
-                                    <input type="text" class="form-control mb-3" name="id" placeholder="ID Cliente">
+                                    <input type="number" class="form-control mb-3" name="id" placeholder="ID Cliente">
                                     <input type="text" class="form-control mb-3" name="Nom" placeholder="Nombre">
-                                    <input type="text" class="form-control mb-3" name="Tel" placeholder="Telefono">
+                                    <input type="number" class="form-control mb-3" name="Tel" placeholder="Telefono">
                                     
                                     <input type="submit" class="btn btn-primary" value="Registrar">
                                      
