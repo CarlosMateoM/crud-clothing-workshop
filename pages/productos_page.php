@@ -17,6 +17,8 @@ $query = mysqli_query($con, $sql);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="fontawesome/css/all.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href=" https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
@@ -72,7 +74,7 @@ $query = mysqli_query($con, $sql);
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="return confirmDelete()">Cargar</button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="return confirmDelete()"></button></a></th>
 
                                 </tr>
                             <?php
@@ -114,7 +116,9 @@ $query = mysqli_query($con, $sql);
                     <table id="Factura" class="table table-dark table-striped table-bordered shadow-lg mt-4" style="width:100%">
                         <thead class="bg-warning">
                             <tr align="center">
-                                <th color=green>Talla</th>
+                                <th color=green>ID Producto</th>
+                                <th>Nombre</th>
+                                <th>Talla</th>
                                 <th>Numero</th>
                                 <th>Observacion</th>
                                 
