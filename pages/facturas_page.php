@@ -59,7 +59,6 @@ $query = mysqli_query($con, $sql);
 
                         <input type="date" class="form-control mb-3" name="fec">
                         <input type="number" class="form-control mb-3" name="idc" placeholder="ID Cliente">
-
                         <input type="submit" class="btn btn-primary" value="Registrar">
 
                     </form>
