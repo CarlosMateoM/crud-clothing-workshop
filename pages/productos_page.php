@@ -59,8 +59,6 @@ $query = mysqli_query($con, $sql);
                                 <th color=green>ID Factura</th>
                                 <th>Cliente</th>
                                 <th>Fecha De Compra</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
                                 <th>Cargar</th>
 
                             </tr>
@@ -74,8 +72,6 @@ $query = mysqli_query($con, $sql);
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="return confirmDelete()">Cargar</button></a></th>
 
                                 </tr>
@@ -91,7 +87,7 @@ $query = mysqli_query($con, $sql);
 
             <div class="row">
                 
-                <h1><span class="badge bg-info">ID Factura Seleccionada: 1 // Cliente: Flacao // Fecha: 2022-07-07 </span></h1>
+                <h3><span class="badge bg-success">ID Factura Seleccionada: 1 // Cliente: Flacao // Fecha: 2022-07-07 </span></h3>
             </div>
 
 
@@ -101,12 +97,12 @@ $query = mysqli_query($con, $sql);
             <div class="row">
 
                 <div class="col-md-3">
-                    <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
+                    <h2><span class="badge bg-warning">Nueva prenda</span></h2>
                     <form action="../insert/insert_factura.php" method="POST">
 
-                        <input type="text" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
-                        <input type="text" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
-                        <input type="text" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
+                        <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
+                        <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
+                        <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
                         <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
