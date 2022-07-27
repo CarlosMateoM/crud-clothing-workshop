@@ -14,15 +14,16 @@
 </head>
 <body>
 <?php
-include("conexion.php");
+include("../conexion.php");
 $con=conectar();
 
 $id_product=$_POST['idP'];
+$id_det=$_POST['idD'];
 $nombre=$_POST['nom'];
 $talla=$_POST['tal'];
 $numero=$_POST['num'];
 $observacion=$_POST['obs'];
-$id_det=$_POST['idD'];
+
 
 
 //echo $codigo_mun_." ".$nombre_." ".$habitantes_." ".$codigo_dpto_;
