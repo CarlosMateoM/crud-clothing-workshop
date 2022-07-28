@@ -132,7 +132,7 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                     <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
                     <form action="../insert/insert_detalles.php" method="POST">
 
-                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
+                        <input id="id_fact" style="display: none;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
                         <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
                         <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
                         <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
@@ -192,7 +192,7 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                     <h1><span class="badge bg-warning">Nuevo Pago</span></h1>
                     <form action="../insert/insert_pagos.php" method="POST">
 
-                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
+                        <input id="id_fact" style="display: none;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
                         <input type="number" class="form-control mb-3" name="id_pago" placeholder="ID Pago">
                         <input type="date" class="form-control mb-3" name="fecha" placeholder="Fecha">
                         <input type="text" class="form-control mb-3" name="forma_pago" placeholder="Forma De Pago">
