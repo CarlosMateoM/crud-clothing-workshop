@@ -8,16 +8,20 @@ $id_factura = $_GET['id_factura'];
 
 $sql = "SELECT f.id_factura,c.nombre,f.fecha FROM factura f JOIN cliente c on f.id_cliente=c.id_cliente";
 
-$sql_productos; 
+$sql_productos;
+$sql_pagos; 
 
 if(!empty($id_factura)){
     $sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = ".$id_factura;
+    $sql_pagos = "SELECT * FROM `pagos` WHERE pagos.id_factura = ".$id_factura;
 }else {
     $sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = 0";
+    $sql_pagos = "SELECT * FROM `pagos` WHERE pagos.id_factura = 0";
 }
 
 $query = mysqli_query($con, $sql);
 $query_productos = mysqli_query($con, $sql_productos);
+$query_pagos = mysqli_query($con, $sql_pagos);
 
 
 ?>
@@ -49,15 +53,6 @@ $query_productos = mysqli_query($con, $sql_productos);
     </script>
 </head>
 <script type="text/javascript">
-    function cargarFactura(id, nombre, fecha) {
-        let label = document.getElementById("info_factura");
-        let fact = document.getElementById("id_fact");
-        fact.setAttribute("value", id);
-        label.innerHTML = "ID: " + id + " | Nombre: " + nombre + " | Fecha: " + fecha;
-
-    }
-
-
     function confirmDelete() {
 
         var respuesta = confirm("Seguro que desea borrar?");
@@ -110,9 +105,9 @@ $query_productos = mysqli_query($con, $sql_productos);
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
-                                    <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="cargarFactura('<?php echo $row['id_factura'] ?>',' <?php echo $row['nombre'] ?>','<?php echo $row['fecha'] ?>')"><i class="fa-solid fa-arrow-up-from-bracket"></i></button></a></th>
+                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
+                                    <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>&nombre=<?php echo $row['nombre'] ?>&fecha=<?php echo $row['fecha'] ?>"> <button type="button" class="btn btn-light">Cargar</button></a></th>
 
                                 </tr>
                             <?php
@@ -125,8 +120,8 @@ $query_productos = mysqli_query($con, $sql_productos);
 
             <!-- titulo de factura seleccionada  -->
 
-            <div class="row">
-                <h1><span id="info_factura" class="badge bg-info">Cargue una factura</span></h1>
+            <div style="margin: 40 0" lass="row">
+                <h1><span id="info_factura" class="badge bg-info" >Factura cargada: <?php echo $_GET['nombre']?> | <?php echo $_GET['fecha']?>  </span></h1>
             </div>
 
             <!-- formulario de productos  -->
@@ -137,7 +132,7 @@ $query_productos = mysqli_query($con, $sql_productos);
                     <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
                     <form action="../insert/insert_detalles.php" method="POST">
 
-                        <input id="id_fact" style="visibility: visible;" class="form-control mb-3" name="id_factura" placeholder="">
+                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
                         <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
                         <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
                         <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
@@ -179,6 +174,62 @@ $query_productos = mysqli_query($con, $sql_productos);
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
 
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- formulario de pagos  -->
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h1><span class="badge bg-warning">Nuevo Pago</span></h1>
+                    <form action="../insert/insert_pagos.php" method="POST">
+
+                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" value="<?php echo $_GET['id_factura'] ?>">
+                        <input type="number" class="form-control mb-3" name="id_pago" placeholder="ID Pago">
+                        <input type="date" class="form-control mb-3" name="fecha" placeholder="Fecha">
+                        <input type="text" class="form-control mb-3" name="forma_pago" placeholder="Forma De Pago">
+                        <input type="number" class="form-control mb-3" name="monto" placeholder="Monto">
+                        <input type="submit" class="btn btn-primary" value="Registrar">
+
+                    </form>
+                </div>
+
+            <!--cargue de pagos-->
+
+                <div class="col-md-8">
+                    <table id="Factura" class="table table-dark table-striped table-bordered shadow-lg mt-4" style="width:100%">
+                        <thead class="bg-warning">
+                            <tr align="center">
+                                <th color=green>ID Pago</th>
+                                <th>Fecha</th>
+                                <th>Forma Pago</th>
+                                <th>Monto</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            while ($row = mysqli_fetch_array($query_pagos)) {
+                            ?>
+                                <tr>
+                                    <th><?php echo $row['id_pagos'] ?></th>
+                                    <th><?php echo $row['fecha'] ?></th>
+                                    <th><?php echo $row['forma_pago'] ?></th>
+                                    <th><?php echo $row['monto'] ?></th>
+                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+
+                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                 </tr>
                             <?php
                             }
