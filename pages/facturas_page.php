@@ -105,7 +105,7 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+                                    <th style="text-align:center"><a href="../update/update_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                     <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>&nombre=<?php echo $row['nombre'] ?>&fecha=<?php echo $row['fecha'] ?>"> <button type="button" class="btn btn-light">Cargar</button></a></th>
 
@@ -173,7 +173,7 @@ $query_pagos = mysqli_query($con, $sql_pagos);
 
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
 
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_detalle.php?id_detalle=<?php echo $row['id_detalles'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
                                 </tr>
                             <?php
                             }
@@ -227,9 +227,8 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                                     <th><?php echo $row['fecha'] ?></th>
                                     <th><?php echo $row['forma_pago'] ?></th>
                                     <th><?php echo $row['monto'] ?></th>
-                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
-
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
+                                    <th style="text-align:center"><a href="actualizar.php?id_pago=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_pago.php?id_pago=<?php echo $row['id_pagos'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                 </tr>
                             <?php
                             }
