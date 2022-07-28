@@ -4,14 +4,20 @@ include("../conexion.php");
 include("../menu.html");
 
 $con = conectar();
+$id_factura = $_GET['id_factura'];
 
 $sql = "SELECT f.id_factura,c.nombre,f.fecha FROM factura f JOIN cliente c on f.id_cliente=c.id_cliente";
-$sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = 1";
+
+$sql_productos; 
+
+if(!empty($id_factura)){
+    $sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = ".$id_factura;
+}else {
+    $sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = 0";
+}
 
 $query = mysqli_query($con, $sql);
-$query_productos = mysqli_query($con, $sql);
-
-
+$query_productos = mysqli_query($con, $sql_productos);
 
 
 ?>
@@ -105,7 +111,7 @@ $query_productos = mysqli_query($con, $sql);
                                     <th><?php echo $row['fecha'] ?></th>
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
-                                    <th style="text-align:center"><a> <button type="button" class="btn btn-light" onclick="cargarFactura('<?php echo $row['id_factura'] ?>',' <?php echo $row['nombre'] ?>','<?php echo $row['fecha'] ?>')">Cargar</button></a></th>
+                                    <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="cargarFactura('<?php echo $row['id_factura'] ?>',' <?php echo $row['nombre'] ?>','<?php echo $row['fecha'] ?>')">Cargar</button></a></th>
 
                                 </tr>
                             <?php
@@ -128,9 +134,9 @@ $query_productos = mysqli_query($con, $sql);
 
                 <div class="col-md-3">
                     <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
-                    <form action="../insert/insert_factura.php" method="POST">
+                    <form action="../insert/insert_detalles.php" method="POST">
 
-                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" placeholder="">
+                        <input id="id_fact" style="visibility: visible;" class="form-control mb-3" name="id_factura" placeholder="">
                         <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
                         <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
                         <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">

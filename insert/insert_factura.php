@@ -39,6 +39,8 @@
        try{
         $sql = "INSERT INTO factura (fecha, id_cliente) VALUES ('$fecha','$id_cliente')";
         $query = mysqli_query($con, $sql);
+        header("Location:".$_SERVER['HTTP_REFERER']);  
+
        }catch (Exception $e){
 
         echo '<div class="container">
