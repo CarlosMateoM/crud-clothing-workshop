@@ -17,8 +17,8 @@
 include("../conexion.php");
 $con=conectar();
 
-$id_product=$_POST['idP'];
-$id_det=$_POST['idD'];
+//$id_product=$_POST['idP'];
+//$id_det=$_POST['idD'];
 $nombre=$_POST['nom'];
 $talla=$_POST['tal'];
 $numero=$_POST['num'];
@@ -33,20 +33,13 @@ $observacion=$_POST['obs'];
 
 
 
-if(empty($id_product))
-{
-echo '<div class="container">
-      <div class="row">
-     <div class="col-md-3  col-sm-6 col-xs-12">';
-echo '<div class="alert alert-danger" role="alert"> Codigo producto VACIO </div>';
-echo '<th><input type="button" value="Página anterior" onClick="history.go(-1);"></th>';
-echo '</div>
-</div>
-</div>';          
-}
-else
-{
-$sql="INSERT INTO productos VALUES('$id_product','$nombre','$talla','$numero','$observacion','$id_det')";
+$sql2 = "SELECT id_detalles FROM detalles_factura, factura WHERE factura.id_factura = detalles_factura.id_factura";
+echo $sql2;
+
+$query=mysqli_query($con,$sql2);
+
+    
+$sql="INSERT INTO productos (nombre, talla, numero, observacion,id_detalles) VALUES('$nombre','$talla','$numero','$observacion','$sql2')";
 $query= mysqli_query($con,$sql);
 
     if($query){
@@ -65,7 +58,7 @@ $query= mysqli_query($con,$sql);
         </div>';        
         }
 
-}       
+       
 
 ?>
 </body>

@@ -76,8 +76,7 @@
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="return confirmDelete()"><i class="fa-regular fa-file-arrow-up"></i></button></a></th>
-
+                                   
                                 </tr>
                             <?php
                             }
@@ -104,11 +103,14 @@
                     <h2><span class="badge bg-warning">Nueva prenda</span></h2>
                     <form action="../insert/insertar_producto.php" method="POST">
 
-                        <input type="number" class="form-control mb-3" name="idP" placeholder="ID Producto">
-                        <input type="number" class="form-control mb-3" name="idD" placeholder="ID Detalles">
-                        <input type="text" class="form-control mb-3" name="nom" placeholder="Nombre del producto">
+                        <input type="number" class="form-control mb-3" name="idP" placeholder="ID Producto" required>
+                        <input type="number" class="form-control mb-3" name="idD" placeholder="ID Detalles" required>
+                        <input type="number" class="form-control mb-3" name="idF" placeholder="ID Factura" required>
+                        <input type="text" class="form-control mb-3" name="nom" placeholder="Nombre del producto" required>
                         <input type="text" class="form-control mb-3" name="tal" placeholder="talla" maxlength="200" required>
                         <input type="number" class="form-control mb-3" name="num" placeholder="Numero (Opcionel)">
+                        <input type="number" class="form-control mb-3" name="can" placeholder="Cantidad" required>
+                        <input type="number" class="form-control mb-3" name="sub" placeholder="subtotal" required>
                         <textarea  class="form-cotrol mb-3" name="obs" placeholder="Observacion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
