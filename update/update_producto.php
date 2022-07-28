@@ -1,5 +1,5 @@
 <?php 
-    include("conexion.php");
+    include("../conexion.php");
     $con=conectar();
 
 $id_product=$_GET['id_producto'];
@@ -25,11 +25,12 @@ $row=mysqli_fetch_array($query);
     <body>
                 <div class="container mt-5">
                     <form action="update_product.php?$row[id_producto']&$row['nombre']&$row['talla']&$row['numero']&$row['observacion']&$row['id_detalles']" method="POST">
-                                <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto" value="<?php echo $row['id_producto'] ?>" required>
+                                
+                    <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto" value="<?php echo $row['id_producto'] ?>" required>
                                 <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre" value="<?php echo $row['nombre']  ?>" required>
                                 <input type="text" class="form-control mb-3" name="talla" placeholder="Talla" value="<?php echo $row['talla']  ?>" required>
                                 <input type="number" class="form-control mb-3" name="numero" placeholder="Numero" value="<?php echo $row['numero'] ?>" required>
-                                <textarea  class="form-cotrol mb-3" name="observacion" placeholder="Observacion" value="<?php echo $row['observacion']  ?>" cols="32" rows="10" maxlength="200"></textarea>
+                                <input type="text" class="form-control mb-3" name="observacion" placeholder="observacion" value="<?php echo $row['observacion'] ?>" required>
                                 <input type="number" class="form-control mb-3" name="id_detalles" placeholder="ID Detalles" value="<?php echo $row['id_detalles'] ?>" required>
                                 
                             <input type="submit" class="btn btn-primary btn-block" value="Actualizar">

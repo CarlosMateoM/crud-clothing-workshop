@@ -146,7 +146,7 @@
                                     <th><?php echo $row['talla'] ?></th>
                                     <th><?php echo $row['numero'] ?></th>
                                     <th><?php echo $row['observacion'] ?></th>
-                                    <th style="text-align:center"><a href="actualizar.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+                                    <th style="text-align:center"><a href="../update/update_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                 </tr>
                             <?php
