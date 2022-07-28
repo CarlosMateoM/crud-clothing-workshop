@@ -17,6 +17,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="../fontawesome/css/all.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
         <link href=" https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -90,8 +91,8 @@
                                                 <th><?php  echo $row['id_cliente']?></th>
                                                 <th><?php  echo $row['nombre']?></th>
                                                 <th><?php  echo $row['telefono']?></th> 
-                                                <th style="text-align:center"><a href="../update/update_cliente.php?id_cliente=<?php echo $row['id_cliente'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
-                                                <th style="text-align:center"><a href="../delete/delete_cliente.php?id_cliente=<?php echo $row['id_cliente'] ?>"> <button type="button"  class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>                                        
+                                                <th style="text-align:center"><a href="../update/update_cliente.php?id_cliente=<?php echo $row['id_cliente'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
+                                                <th style="text-align:center"><a href="../delete/delete_cliente.php?id_cliente=<?php echo $row['id_cliente'] ?>"> <button type="button"  class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>                                        
                                             </tr>
                                         <?php 
                                             }

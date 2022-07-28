@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CRUD_DATASET/fontawesome/css/all.css">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href=" https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -146,8 +147,8 @@
                                     <th><?php echo $row['talla'] ?></th>
                                     <th><?php echo $row['numero'] ?></th>
                                     <th><?php echo $row['observacion'] ?></th>
-                                    <th style="text-align:center"><a href="../update/update_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
-                                    <th style="text-align:center"><a href="../delete/delete_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
+                                    <th style="text-align:center"><a href="../update/update_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_producto.php?id_producto=<?php echo $row['id_producto'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
                                 </tr>
                             <?php
                             }
