@@ -7,11 +7,11 @@ $id_product=$_POST['id_producto'];
 $nombre=$_POST['nombre'];
 $talla=$_POST['talla'];
 $numero=$_POST['numero'];
-$obser_POST['observacion'];
+$observacion=$_POST['observacion'];
 $idD=$_POST['id_detalles'];
 
 
-$sql="UPDATE productos SET  id_producto='$id_product', nombre='$nombre', talla='$talla', numero='$numero', observacion='$obser', id_detalles='$idD' WHERE id_producto='$id_product'";
+$sql="UPDATE productos SET  id_producto='$id_product', nombre='$nombre', talla='$talla', numero='$numero', observacion='$observacion', id_detalles='$idD' WHERE id_producto='$id_product'";
 
 $query=mysqli_query($con,$sql);
 

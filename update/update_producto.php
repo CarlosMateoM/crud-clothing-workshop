@@ -24,7 +24,7 @@ $row=mysqli_fetch_array($query);
     </head>
     <body>
                 <div class="container mt-5">
-                    <form action="update_product.php?$row[id_producto']&$row['nombre']&$row['talla']&$row['numero']&$row['observacion']&$row['id_detalles']" method="POST">
+                    <form action="update_product.php?$row[id_producto']&$row['nombre']&$row['talla']&$row['numero']&$row['observacion']&$row['id_detalles']"method="POST">
                                 
                     <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto" value="<?php echo $row['id_producto'] ?>" required>
                                 <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre" value="<?php echo $row['nombre']  ?>" required>
