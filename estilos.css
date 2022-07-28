@@ -1,7 +1,7 @@
 .content {
 min-height: 100vh;
 background: linear-gradient(rgba(5,7,12,0.75), rgba(5,7,12,0.75)),
-url('Pais3.jpg') no-repeat center fixed;
+url('textil.jpg') no-repeat center fixed;
 
 background-size: cover;
 
@@ -23,7 +23,7 @@ align-items: center;
 .content h1, h4
 {
     position: relative;
-    color: silver;
+    color: rgb(255, 255, 255);
 
 }
 
@@ -59,3 +59,31 @@ content table
    padding: 20px 20px 30px 30px;
 }
 
+#fondo 
+{
+    background-image: url(https://quantiasolutions.com/wp-content/uploads/industria-textil-1.jpg);
+    padding: 400px 100px;
+    text-align: center;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#fondo:before
+{
+    content:'';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+#fondo h1 
+{
+    font-size: 60px;
+    color: #fff;
+    position: relative;
+}
