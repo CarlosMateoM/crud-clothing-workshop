@@ -19,14 +19,15 @@
     <?php
     include("../conexion.php");
     $con = conectar();
-
+    $id_factura = $_POST['id_factura'];
     $id_producto = $_POST['id_producto'];
     $cantidad = $_POST['cantidad'];
-    $cantidad = $_POST['valor_unitario'];
-    $cantidad = $_POST['descripcion'];
+    $valor_unitario = $_POST['valor_unitario'];
+    $descripcion = $_POST['descripcion'];
+    $subtotal = $cantidad * $valor_unitario;
 
 
-    if (empty($id_cliente)) {
+    if (empty($id_factura)) {
         echo '<div class="container">
       <div class="row">
      <div class="col-md-3  col-sm-6 col-xs-12">';
@@ -36,7 +37,7 @@
 </div>
 </div>';
     } else {
-        $sql = "INSERT INTO detalles_factura(id_detalles, cantidad, de) VALUES ('$fecha','$id_cliente')";
+        $sql = "INSERT INTO `detalles_factura`(`id_detalles`, `cantidad`, `descripsion`, `valor_unicario`, `subtotal`, `id_factura`) VALUES ('$id_producto','$cantidad','$descripcion','$valor_unitario','$subtotal','$id_factura')";
         $query = mysqli_query($con, $sql);
 
         if ($query) {
