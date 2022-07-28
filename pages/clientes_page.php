@@ -59,7 +59,7 @@
                         
                                 <form action="../insert/insert_cliente.php" method="POST">
 
-                                    <input type="number" class="form-control mb-3" name="id" placeholder="ID Cliente" required>
+                                    <!--input type="number" class="form-control mb-3" name="id" placeholder="ID Cliente" required-->
                                     <input type="text" class="form-control mb-3" name="Nom" placeholder="Nombre" required>
                                     <input type="number" class="form-control mb-3" name="Tel" placeholder="Telefono" required>
                                     
