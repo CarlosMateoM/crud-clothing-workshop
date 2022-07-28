@@ -6,7 +6,13 @@ include("../menu.html");
 $con = conectar();
 
 $sql = "SELECT f.id_factura,c.nombre,f.fecha FROM factura f JOIN cliente c on f.id_cliente=c.id_cliente";
+$sql_productos = "SELECT * FROM `detalles_factura` WHERE id_factura = 1";
+
 $query = mysqli_query($con, $sql);
+$query_productos = mysqli_query($con, $sql);
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +41,15 @@ $query = mysqli_query($con, $sql);
     </script>
 </head>
 <script type="text/javascript">
+    function cargarFactura(id, nombre, fecha) {
+        let label = document.getElementById("info_factura");
+        let fact = document.getElementById("id_fact");
+        fact.setAttribute("value", id);
+        label.innerHTML = "ID: " + id + " | Nombre: " + nombre + " | Fecha: " + fecha;
+
+    }
+
+
     function confirmDelete() {
 
         var respuesta = confirm("Seguro que desea borrar?");
@@ -78,6 +93,7 @@ $query = mysqli_query($con, $sql);
                             </tr>
                         </thead>
 
+
                         <tbody>
                             <?php
                             while ($row = mysqli_fetch_array($query)) {
@@ -88,7 +104,7 @@ $query = mysqli_query($con, $sql);
                                     <th><?php echo $row['fecha'] ?></th>
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="return confirmDelete()">Cargar</button></a></th>
+                                    <th style="text-align:center"><a> <button type="button" class="btn btn-light" onclick="cargarFactura('<?php echo $row['id_factura'] ?>',' <?php echo $row['nombre'] ?>','<?php echo $row['fecha'] ?>')">Cargar</button></a></th>
 
                                 </tr>
                             <?php
@@ -102,11 +118,8 @@ $query = mysqli_query($con, $sql);
             <!-- titulo de factura seleccionada  -->
 
             <div class="row">
-                
-                <h1><span class="badge bg-info">ID Factura Seleccionada: 1 // Cliente: Flacao // Fecha: 2022-07-07 </span></h1>
+                <h1><span id="info_factura" class="badge bg-info">Cargue una factura</span></h1>
             </div>
-
-
 
             <!-- formulario de productos  -->
 
@@ -116,15 +129,18 @@ $query = mysqli_query($con, $sql);
                     <h1><span class="badge bg-warning">Nuevo Producto</span></h1>
                     <form action="../insert/insert_factura.php" method="POST">
 
+                        <input id="id_fact" style="visibility: hidden;" class="form-control mb-3" name="id_factura" placeholder="">
                         <input type="number" class="form-control mb-3" name="id_producto" placeholder="ID Producto">
                         <input type="number" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
                         <input type="number" class="form-control mb-3" name="valor_unitario" placeholder="Valor Unitario">
-                        <textarea  class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10" maxlength="200"></textarea>
+                        <textarea class="form-cotrol mb-3" name="descripcion" placeholder="Descripcion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">
 
                     </form>
                 </div>
+
+            <!--cargue de productos-->
 
                 <div class="col-md-8">
                     <table id="Factura" class="table table-dark table-striped table-bordered shadow-lg mt-4" style="width:100%">
@@ -134,18 +150,24 @@ $query = mysqli_query($con, $sql);
                                 <th>Cantidad</th>
                                 <th>Valor Unitario</th>
                                 <th>Descripcion</th>
-                                
+                                <th>Subtotal</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-                            while ($row = mysqli_fetch_array($query)) {
+                            while ($row = mysqli_fetch_array($query_productos)) {
                             ?>
                                 <tr>
-                                    <th><?php echo $row['id_factura'] ?></th>
-                                    <th><?php echo $row['nombre'] ?></th>
-                                    <th><?php echo $row['fecha'] ?></th>
+                                    <th><?php echo $row['id_detalles'] ?></th>
+                                    <th><?php echo $row['cantidad'] ?></th>
+                                    <th><?php echo $row['valor_unicario'] ?></th>
+                                    <th><?php echo $row['descripsion'] ?></th>
+                                    <th><?php echo $row['subtotal'] ?></th>
+
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
 
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
