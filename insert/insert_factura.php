@@ -39,7 +39,8 @@
        try{
         $sql = "INSERT INTO factura (fecha, id_cliente) VALUES ('$fecha','$id_cliente')";
         $query = mysqli_query($con, $sql);
-       }catch (Exception $e){
+       
+    }catch (Exception $e){
 
         echo '<div class="container">
         <div class="row">
