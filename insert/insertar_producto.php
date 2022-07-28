@@ -18,7 +18,7 @@ include("../conexion.php");
 $con=conectar();
 
 //$id_product=$_POST['idP'];
-//$id_det=$_POST['idD'];
+$id_det=$_POST['idD'];
 $nombre=$_POST['nom'];
 $talla=$_POST['tal'];
 $numero=$_POST['num'];
@@ -39,7 +39,7 @@ echo $sql2;
 $query=mysqli_query($con,$sql2);
 
     
-$sql="INSERT INTO productos (nombre, talla, numero, observacion,id_detalles) VALUES('$nombre','$talla','$numero','$observacion','$sql2')";
+$sql="INSERT INTO productos (nombre, talla, numero, observacion,id_detalles) VALUES('$nombre','$talla','$numero','$observacion','$id_det')";
 $query= mysqli_query($con,$sql);
 
     if($query){
