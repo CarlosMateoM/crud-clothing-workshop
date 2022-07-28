@@ -5,7 +5,8 @@
 
     $con = conectar();
 
-    $sql = "SELECT f.id_factura,c.nombre,f.fecha FROM factura f JOIN cliente c on f.id_cliente=c.id_cliente";
+    $sql = "SELECT f.id_factura,d.id_detalles,c.nombre,f.fecha FROM cliente c JOIN factura f  on f.id_cliente=c.id_cliente
+    JOIN detalles_factura d on f.id_factura=d.id_factura";
     $query = mysqli_query($con, $sql);
 
     $sql1 = "SELECT * FROM productos";
@@ -61,9 +62,10 @@
                         <thead class="bg-warning">
                             <tr align="center">
                                 <th color=green>ID Factura</th>
+                                <th>ID Detalles</th>
                                 <th>Cliente</th>
                                 <th>Fecha De Compra</th>
-                                <th>Cargar</th>
+    
 
                             </tr>
                         </thead>
@@ -74,9 +76,11 @@
                             ?>
                                 <tr>
                                     <th><?php echo $row['id_factura'] ?></th>
+                                    <th><?php echo $row['id_detalles'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
-                                   
+                                  
+
                                 </tr>
                             <?php
                             }
@@ -88,10 +92,10 @@
 
             <!-- titulo de factura seleccionada  -->
 
-            <div class="row">
+            <!--div class="row">
                 
                 <h3><span class="badge bg-success">ID Factura Seleccionada: 1 // Cliente: Flacao // Fecha: 2022-07-07 </span></h3>
-            </div>
+            </div-->
 
 
 
@@ -103,14 +107,11 @@
                     <h2><span class="badge bg-warning">Nueva prenda</span></h2>
                     <form action="../insert/insertar_producto.php" method="POST">
 
-                        <input type="number" class="form-control mb-3" name="idP" placeholder="ID Producto" required>
+                        <!--input type="number" class="form-control mb-3" name="idP" placeholder="ID Producto" required-->
                         <input type="number" class="form-control mb-3" name="idD" placeholder="ID Detalles" required>
-                        <input type="number" class="form-control mb-3" name="idF" placeholder="ID Factura" required>
                         <input type="text" class="form-control mb-3" name="nom" placeholder="Nombre del producto" required>
                         <input type="text" class="form-control mb-3" name="tal" placeholder="talla" maxlength="200" required>
                         <input type="number" class="form-control mb-3" name="num" placeholder="Numero (Opcionel)">
-                        <input type="number" class="form-control mb-3" name="can" placeholder="Cantidad" required>
-                        <input type="number" class="form-control mb-3" name="sub" placeholder="subtotal" required>
                         <textarea  class="form-cotrol mb-3" name="obs" placeholder="Observacion" cols="32" rows="10" maxlength="200"></textarea>
 
                         <input type="submit" class="btn btn-primary" value="Registrar">

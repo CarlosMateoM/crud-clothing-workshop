@@ -80,7 +80,7 @@ $query_productos = mysqli_query($con, $sql_productos);
                     <form action="../insert/insert_factura.php" method="POST">
 
                         <input type="date" class="form-control mb-3" name="fec">
-                        <input type="number" class="form-control mb-3" name="idc" placeholder="ID Cliente">
+                        <input type="number" class="form-control mb-3" name="idc" placeholder="ID Cliente" required>
                         <input type="submit" class="btn btn-primary" value="Registrar">
 
                     </form>
