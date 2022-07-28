@@ -5,11 +5,14 @@
 
     $con = conectar();
 
-    $sql = "SELECT f.id_factura,d.id_detalles,c.nombre,f.fecha FROM cliente c JOIN factura f  on f.id_cliente=c.id_cliente
+    $sql = "SELECT f.id_factura,d.id_detalles,c.id_cliente,c.nombre,f.fecha FROM cliente c JOIN factura f  on f.id_cliente=c.id_cliente
     JOIN detalles_factura d on f.id_factura=d.id_factura";
     $query = mysqli_query($con, $sql);
 
-    $sql1 = "SELECT * FROM productos";
+    $sql1 = "SELECT p.id_producto,d.id_detalles,c.id_cliente,p.nombre,p.talla,p.numero,p.observacion  
+    FROM productos p JOIN detalles_factura d on p.id_detalles=d.id_detalles 
+    JOIN factura f on f.id_factura=d.id_factura 
+    JOIN cliente c on c.id_cliente=f.id_cliente ORDER BY c.id_cliente ASC";
     $query1 = mysqli_query($con, $sql1);
 
 ?>
@@ -64,6 +67,7 @@
                             <tr align="center">
                                 <th color=green>ID Factura</th>
                                 <th>ID Detalles</th>
+                                <th>ID Cliente</th>
                                 <th>Cliente</th>
                                 <th>Fecha De Compra</th>
     
@@ -78,6 +82,7 @@
                                 <tr>
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['id_detalles'] ?></th>
+                                    <th><?php echo $row['id_cliente'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
                                   
@@ -126,6 +131,7 @@
                             <tr align="center">
                                 <th color=green>ID Producto</th>
                                 <th>ID Detalles</th>
+                                <th>ID cliente</th>
                                 <th>Nombre</th>
                                 <th>Talla</th>
                                 <th>Numero</th>
@@ -143,6 +149,7 @@
                                 <tr>
                                     <th><?php echo $row['id_producto'] ?></th>
                                     <th><?php echo $row['id_detalles'] ?></th>
+                                    <th><?php echo $row['id_cliente'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['talla'] ?></th>
                                     <th><?php echo $row['numero'] ?></th>
