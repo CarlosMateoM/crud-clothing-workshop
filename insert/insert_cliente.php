@@ -8,7 +8,7 @@
     <title>Insertando cliente</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+    
         <!--<link href="css/style.css" rel="stylesheet">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
@@ -20,24 +20,14 @@ include("../conexion.php");
 $con=conectar();
 
 
-$id_cliente=$_POST['id'];
+//$id_cliente=$_POST['id'];
 $nombre=$_POST['Nom'];
 $telefono=$_POST['Tel'];
 
 
-if(empty($id_cliente))
-{
-echo '<div class="container">
-      <div class="row">
-     <div class="col-md-3  col-sm-6 col-xs-12">';
-echo '<div class="alert alert-danger" role="alert"> ID de cliente VACIO </div>';
-echo '<th><input type="button" value="Página anterior" onClick="history.go(-1);"></th>';
-echo '</div>
-</div>
-</div>';          
-} else {
 
-    $sql="INSERT INTO cliente VALUES('$id_cliente','$nombre','$telefono')";
+
+    $sql="INSERT INTO cliente (nombre, telefono) VALUES('$nombre','$telefono')";
     echo $sql;
     $query= mysqli_query($con,$sql);
 
@@ -55,7 +45,7 @@ echo '</div>
         </div>';        
     }
 
-}       
+      
 
 ?>
 </body>

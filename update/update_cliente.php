@@ -1,5 +1,5 @@
 <?php 
-    include("conexion.php");
+    include("../conexion.php");
     $con=conectar();
 
 $id_client=$_GET['id_cliente'];

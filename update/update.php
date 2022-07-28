@@ -1,6 +1,6 @@
 <?php
 
-include("conexion.php");
+include("../conexion.php");
 $con=conectar();
 
 $id_client=$_POST['id_cliente'];
@@ -13,6 +13,6 @@ $sql="UPDATE cliente SET  id_cliente='$id_client',nombre='$nombre',telefono='$te
 $query=mysqli_query($con,$sql);
 
     if($query){
-        Header("Location: Clientes.php");
+        header("Location: ../pages/clientes_page.php");
     }
 ?>

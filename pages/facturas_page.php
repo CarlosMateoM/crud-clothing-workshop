@@ -35,6 +35,7 @@ $query_pagos = mysqli_query($con, $sql_pagos);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="C:\Users\minic\OneDrive\Documents\Xampp\htdocs\crud_dataset\fontawesome/css/all.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href=" https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -104,9 +105,15 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                                     <th><?php echo $row['id_factura'] ?></th>
                                     <th><?php echo $row['nombre'] ?></th>
                                     <th><?php echo $row['fecha'] ?></th>
+<<<<<<< HEAD
                                     <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
                                     <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
                                     <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>&nombre=<?php echo $row['nombre'] ?>&fecha=<?php echo $row['fecha'] ?>"> <button type="button" class="btn btn-light">Cargar</button></a></th>
+=======
+                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
+                                    <th style="text-align:center"><a href="facturas_page.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-light" onclick="cargarFactura('<?php echo $row['id_factura'] ?>',' <?php echo $row['nombre'] ?>','<?php echo $row['fecha'] ?>')"><i class="fa-solid fa-arrow-up-from-bracket"></i></button></a></th>
+>>>>>>> eb1a108d00e785031af07a3805df5b11c1fd8bb0
 
                                 </tr>
                             <?php
@@ -170,9 +177,9 @@ $query_pagos = mysqli_query($con, $sql_pagos);
                                     <th><?php echo $row['descripsion'] ?></th>
                                     <th><?php echo $row['subtotal'] ?></th>
 
-                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info">Editar</button></a></th>
+                                    <th style="text-align:center"><a href="actualizar.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-info"><i class="fa-solid fa-pencil"></i></button></a></th>
 
-                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()">Eliminar</button></a></th>
+                                    <th style="text-align:center"><a href="../delete/delete_factura.php?id_factura=<?php echo $row['id_factura'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirmDelete()"><i class="fa-solid fa-trash-can"></i></button></a></th>
                                 </tr>
                             <?php
                             }
