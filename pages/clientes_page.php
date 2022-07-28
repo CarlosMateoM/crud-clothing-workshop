@@ -56,6 +56,7 @@
                         
                         <div class="col-md-3">
                         <h1><span class="badge bg-warning">Nuevo Cliente</span></h1>
+                        
                                 <form action="../insert/insert_cliente.php" method="POST">
 
                                     <input type="number" class="form-control mb-3" name="id" placeholder="ID Cliente">
